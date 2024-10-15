@@ -1,0 +1,37 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.toTitleCaseV1 = toTitleCaseV1;
+
+/**
+ * Retourne une chaîne de caractères dont la première lettre de
+ * chaque mot est en majuscule et les autres lettres en minuscules.
+ * Version longue.
+ * @param {string} str
+ * @returns string
+ */
+function toTitleCaseV1(str) {
+  // pas de valeur ou chaîne vide, on retourne une chaîne vide
+  if (!str || !str.length) return ""; // passage de la chaîne en minuscules et
+  // on scinde la chaîne dans un tableau par la caractères espace
+  // @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/split
+
+  var splitStr = str.toLowerCase().split(" "); // on parcourt chaque morceau de la chaîne
+
+  for (var i = 0; i < splitStr.length; i++) {
+    // on remplace le morceau actuel par
+    //  - le premier caractère (splitStr[i].charAt(0))
+    //    passé en majuscule (toUpperCase())
+    //  - auquel on accole le reste de la chaîne (splitStr[i].substring(1))
+    // @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
+    // @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/substring
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+  } // on retourne une chaîne fabriquée en joignant les morceaux
+  // de la chaîne contenu dans le tableau
+  // @see https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+
+
+  return splitStr.join(" ");
+}
